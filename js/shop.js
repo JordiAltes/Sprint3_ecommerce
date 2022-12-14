@@ -77,14 +77,18 @@ function buy(id) {
     // 2. Add found product to the cartList array
     for (let i = 0; i < products.length; i++) {
         if (products[i].id === id) cartList.push(products[i])
+        document.getElementById("count_product").innerHTML = cartList.length
     }
+    generateCart()
     console.log(cartList);
     
 }
 
 // Exercise 2
 function cleanCart() {
-
+    cartList = []
+    document.getElementById("count_product").innerHTML = 0
+    console.log(cartList);
 }
 
 // Exercise 3
