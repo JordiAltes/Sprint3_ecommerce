@@ -88,6 +88,7 @@ function buy(id) {
 function cleanCart() {
     cartList = []
     document.getElementById("count_product").innerHTML = 0
+    document.getElementById("total_price").innerHTML = 0
     console.log(cartList);
 }
 
@@ -97,6 +98,7 @@ function calculateTotal() {
     for (let i = 0; i < cartList.length; i++) {
         total += cartList[i].price
     }
+    document.getElementById("total_price").innerHTML = total
     console.log(total);
 }
 
@@ -104,6 +106,20 @@ function calculateTotal() {
 function generateCart() {
     // Using the "cartlist" array that contains all the items in the shopping cart, 
     // generate the "cart" array that does not contain repeated items, instead each item of this array "cart" shows the quantity of product.
+    cart = []
+    for (let i = 0; i < cartList.length; i++) {
+        const product = cartList[i]
+        const productExist = cart.includes(product)
+        if (!productExist) {
+            product.quantity = 1
+            cart.push(product)
+        }
+        if (productExist) {
+            product.quantity += 1
+        }
+    }
+    console.log(cart);
+    console.log(product);
 }
 
 // Exercise 5
