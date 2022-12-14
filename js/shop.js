@@ -79,7 +79,7 @@ function buy(id) {
         if (products[i].id === id) cartList.push(products[i])
         document.getElementById("count_product").innerHTML = cartList.length
     }
-    generateCart()
+    calculateTotal()
     console.log(cartList);
     
 }
@@ -94,6 +94,10 @@ function cleanCart() {
 // Exercise 3
 function calculateTotal() {
     // Calculate total price of the cart using the "cartList" array
+    for (let i = 0; i < cartList.length; i++) {
+        total += cartList[i].price
+    }
+    console.log(total);
 }
 
 // Exercise 4
