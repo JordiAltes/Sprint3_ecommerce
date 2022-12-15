@@ -79,7 +79,7 @@ function buy(id) {
         if (products[i].id === id) cartList.push(products[i])
         document.getElementById("count_product").innerHTML = cartList.length
     }
-    calculateTotal()
+    generateCart()
     console.log(cartList);
     
 }
@@ -112,19 +112,25 @@ function generateCart() {
         const productExist = cart.includes(product)
         if (!productExist) {
             product.quantity = 1
+            product.subtotal = product.price
             cart.push(product)
         }
         if (productExist) {
             product.quantity += 1
+            product.subtotal += product.price
         }
     }
+    calculateTotal()
+    applyPromotionsCart(cart)
     console.log(cart);
-    console.log(product);
 }
 
 // Exercise 5
-function applyPromotionsCart() {
+function applyPromotionsCart(cart) {
     // Apply promotions to each item in the array "cart"
+    for (let i = 0; i < cart.length; i++) {
+        
+    }
 }
 
 // Exercise 6
