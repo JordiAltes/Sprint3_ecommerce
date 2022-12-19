@@ -129,7 +129,16 @@ function generateCart() {
 function applyPromotionsCart(cart) {
     // Apply promotions to each item in the array "cart"
     for (let i = 0; i < cart.length; i++) {
-        
+        const existDiscount = cart[i].offer
+        if (existDiscount) {
+            const haveDiscount = cart[i].quantity >= cart[i].offer.number
+            
+            if (haveDiscount) {
+                const percent = cart[i].offer.percent / 100
+                cart[i].subtotalWithDiscount = cart[i].subtotal - (cart[i].subtotal * percent)
+            }
+        }
+       
     }
 }
 
