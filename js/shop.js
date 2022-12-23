@@ -96,9 +96,18 @@ function cleanCart() {
 function calculateTotal() {
   // Calculate total price of the cart using the "cartList" array
   total = 0;
-  for (let i = 0; i < cartList.length; i++) {
-    total += cartList[i].price;
+
+  for (let i = 0; i < cart.length; i++) {
+    const existAplicatedDiscount = cart[i].subtotalWithDiscount
+    existAplicatedDiscount ? total += cart[i].subtotalWithDiscount : total += cart[i].subtotal
   }
+  
+  
+  
+  
+  /* for (let i = 0; i < cartList.length; i++) {
+    total += cartList[i].price;
+  } */
   document.getElementById("total_price").innerHTML = total;
   console.log(total);
 }
