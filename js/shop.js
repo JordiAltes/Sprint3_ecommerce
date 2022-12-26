@@ -132,6 +132,7 @@ function generateCart() {
   }
   applyPromotionsCart(cart);
   calculateTotal();
+  printCart();
   console.log(cart);
 }
 
@@ -155,6 +156,7 @@ function applyPromotionsCart(cart) {
 // Exercise 6
 function printCart() {
   // Fill the shopping cart modal manipulating the shopping cart dom
+  document.getElementById("total_price").innerHTML = total
 }
 
 // ** Nivell II **
