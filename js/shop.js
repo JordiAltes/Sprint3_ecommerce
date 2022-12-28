@@ -156,7 +156,26 @@ function applyPromotionsCart(cart) {
 // Exercise 6
 function printCart() {
   // Fill the shopping cart modal manipulating the shopping cart dom
-  document.getElementById("total_price").innerHTML = total
+
+  let htmlCart = ''
+  let counterProduct = 0
+  cart.forEach(e => {
+      htmlCart +=
+          `<tr id="trashDelete${e.id}">
+              <th scope="row">${e.name}</th>
+              <td>$${e.price}</td>
+              <td>${e.quantity}</td>
+              <td>$${e.subtotal}</td>
+              <td>${e.subtotalWithDiscount?'$' + e.subtotalWithDiscount:''}</td>
+          </tr>`
+      counterProduct += e.quantity
+  });
+  const totalDecimal = total % 1 !== 0
+  if (totalDecimal) total = total.toFixed(2)
+
+  document.getElementById('cart_list').innerHTML = htmlCart
+  document.getElementById('count_product').innerHTML = counterProduct
+  document.getElementById('total_price').innerHTML = total
 }
 
 // ** Nivell II **
