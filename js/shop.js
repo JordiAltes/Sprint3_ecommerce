@@ -85,11 +85,12 @@ function buy(id) {
 
 // Exercise 2
 function cleanCart() {
-  cartList = [];
+  cart = [];
+  cartList = []
   total = 0;
-  document.getElementById("count_product").innerHTML = 0;
-  document.getElementById("total_price").innerHTML = 0;
-  console.log(cartList);
+  /* document.getElementById("count_product").innerHTML = 0;
+  document.getElementById("total_price").innerHTML = 0; */
+  printCart()
 }
 
 // Exercise 3
@@ -173,9 +174,9 @@ function printCart() {
   const totalDecimal = total % 1 !== 0
   if (totalDecimal) total = total.toFixed(2)
 
-  document.getElementById('cart_list').innerHTML = htmlCart
-  document.getElementById('count_product').innerHTML = counterProduct
-  document.getElementById('total_price').innerHTML = total
+  document.getElementById('cart_list').innerHTML = htmlCart;
+  document.getElementById('count_product').innerHTML = counterProduct;
+  document.getElementById('total_price').innerHTML = total;
 }
 
 // ** Nivell II **
