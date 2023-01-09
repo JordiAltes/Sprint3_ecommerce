@@ -14,7 +14,7 @@ const addInvalidClass = (element, error) => {
     element.classList.add("is-valid");
   }
 };
-// Exercise 6
+// Exercise 7
 function validate() {
   let error = 0;
   let checkOutForm = document.getElementById("checkOutForm");

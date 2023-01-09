@@ -144,12 +144,16 @@ function applyPromotionsCart(cart) {
     const existDiscount = cart[i].offer;
     if (existDiscount) {
       const haveDiscount = cart[i].quantity >= cart[i].offer.number;
+      const existAplicatedDiscount = cart[i].subtotalWithDiscount
 
       if (haveDiscount) {
         const percent = cart[i].offer.percent / 100;
         cart[i].subtotalWithDiscount =
           cart[i].subtotal - cart[i].subtotal * percent;
       }
+      if (existAplicatedDiscount && !haveDiscount) {
+        delete(cart[i].subtotalWithDiscount)            
+    }
     }
   }
 }
@@ -176,10 +180,10 @@ function printCart() {
   document.getElementById('count_product').innerHTML = counterProduct;
   document.getElementById('total_price').innerHTML = total;
 }
-
+// Exercise 7 on checkout.js
 // ** Nivell II **
 
-// Exercise 7
+// Exercise 8
 function addToCart(id) {
   // Refactor previous code in order to simplify it
   // 1. Loop for to the array products to get the item to add to cart
@@ -201,19 +205,28 @@ function addToCart(id) {
       }
   }
 }
-console.log(cart);
 applyPromotionsCart(cart);
 calculateTotal();
 printCart();
 }
 
-// Exercise 8
+// Exercise 9
 function removeFromCart(id) {
   // 1. Loop for to the array products to get the item to add to cart
   // 2. Add found product to the cartList array
+  const productDelated = cart.find(e => e.id === id)
+  productDelated.quantity--
+  productDelated.subtotal -= productDelated.price
+   
+if (productDelated.quantity === 0) {
+    const indexOfProductDelated = cart.findIndex(e => e.id === id)
+    cart.splice(indexOfProductDelated, 1)
+  }
+applyPromotionsCart(cart);
+calculateTotal();
+printCart();
 }
 
 function open_modal() {
-  console.log("Open Modal");
-  printCart();
+printCart();
 }
