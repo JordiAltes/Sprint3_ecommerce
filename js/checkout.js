@@ -99,7 +99,6 @@ function validate() {
       (e) => {
         e.preventDefault();
       },
-      true
     );
   } else {
     alert("OK");
