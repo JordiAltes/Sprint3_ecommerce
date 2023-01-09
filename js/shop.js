@@ -171,8 +171,6 @@ function printCart() {
           </tr>`
       counterProduct += e.quantity
   });
-  const totalDecimal = total % 1 !== 0
-  if (totalDecimal) total = total.toFixed(2)
 
   document.getElementById('cart_list').innerHTML = htmlCart;
   document.getElementById('count_product').innerHTML = counterProduct;
@@ -186,6 +184,27 @@ function addToCart(id) {
   // Refactor previous code in order to simplify it
   // 1. Loop for to the array products to get the item to add to cart
   // 2. Add found product to the cart array or update its quantity in case it has been added previously.
+
+  for (let i = 0; i < products.length; i++) {
+    if (products[i].id === id) {
+      const productSelected = products[i]
+      const productExist = cart.includes(productSelected)
+    
+      if (!productExist) {
+        productSelected.quantity = 1
+        productSelected.subtotal = productSelected.price
+        cart.push(productSelected)
+      }
+      if (productExist) {
+        productSelected.quantity += 1
+        productSelected.subtotal += productSelected.price
+      }
+  }
+}
+console.log(cart);
+applyPromotionsCart(cart);
+calculateTotal();
+printCart();
 }
 
 // Exercise 8
