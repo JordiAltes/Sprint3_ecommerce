@@ -1,4 +1,4 @@
-const validateEmail = (email) => {
+function validateEmail (email) {
   return String(email)
     .toLowerCase()
     .match(
@@ -6,7 +6,7 @@ const validateEmail = (email) => {
     );
 };
 
-const addInvalidClass = (element, error) => {
+function addInvalidClass (element, error) {
   if (error) {
     element.classList.add("is-invalid");
   } else {
@@ -25,14 +25,6 @@ function validate() {
   let fLastN = document.getElementById("fLastN");
   let fPassword = document.getElementById("fPassword");
   let fPhone = document.getElementById("fPhone");
-
-  // Get the error elements
-  /* let errorName = document.getElementById("errorName");
-	let errorEmail = document.getElementById("errorEmail");
-	let errorAddress = document.getElementById("errorAddress")
-	let errorLastN = document.getElementById("errorLastN");
-	let errorPassword = document.getElementById("errorPassword");
-	let errorPhone = document.getElementById("errorPhone"); */
 
   // Validate fields entered by the user: name, phone, password, and email
   if (
